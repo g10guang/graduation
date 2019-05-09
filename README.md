@@ -116,6 +116,59 @@ read_api /meta 请求：
 
 ![read_api meta 请求格式](./doc/read_api_meta.png)
 
+### 压力测试
+
+本机配置：
+
+- Intel i7 4710M四核处理器
+- 12GB 内存
+- 固态硬盘，mSata3.0
+
+HDFS / NSQ / MySQL / Redis / read_api / write_api / consumer 均通过 Docker 在本地部署，都是单实例。
+
+用于测试的图片（大小为24k）：
+
+![测试图片](./test/test.png)
+
+#### write_api post
+
+[测试脚本](./test/post.py)
+
+测试结果截图：
+
+![测试结果](./doc/write_api_post_压力测试.png)
+
+结论：
+
+1. 接口平均处理时延：149.5ms
+2. 吞吐量：6.6/s
+
+#### write_api delete
+
+[测试脚本](./test/delete.py)
+
+测试结果截图：
+
+![测试结果](./doc/write_api_delete_2114.png)
+
+结论：
+
+1.  接口平均处理时延：22.7ms
+2.  吞吐量：43.1/s
+
+#### read_api get
+
+[测试脚本](./test/get.py)
+
+测试结果截图：
+
+![测试结果](./doc/read_api_get_2114.png)
+
+结论：
+
+1. 接口平均处理时延为4.3ms
+2. 吞吐量：227.2/s
+
 ### 技术选型
 
 #### 编程语言 Golang
